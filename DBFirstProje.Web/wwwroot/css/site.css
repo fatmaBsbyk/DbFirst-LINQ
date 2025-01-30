@@ -1,0 +1,24 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+/*kebab-case notasyonu */
+.urun-resmi{
+    width:64px;
+    height:64px;
+    box-shadow:2px 3px #0094ff;
+}

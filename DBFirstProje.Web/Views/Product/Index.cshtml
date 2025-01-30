@@ -1,0 +1,52 @@
+﻿@using DBFirstProje.Web.Models
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Ürünler Sayfası";
+}
+@model IEnumerable<DBFirstProje.Web.Models.Product>
+    <div class="container-fluid">
+        <!--tablo oluşturalım-->
+        <hr />
+        <a class="btn btn-primary" asp-action="Add" asp-controller="Product">Yeni Ürün Ekle</a>
+        <hr />
+        <table class="table table-striped">
+            <thead class="text-white bg-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>ÜRÜN ADI</th>
+                    <th>STOK MİKTARI</th>
+                    <th>FİYATI</th>
+                    <th>ÜRÜN RESMİ</th>
+                    <th>İŞLEMLER</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--veriler--> 
+            @{
+                foreach(var urun in Model)
+                {
+                    <tr>
+                    <td>@urun.Id</td>
+                    <td>@urun.Name</td>
+                    <td>@urun.Stock</td>
+                    <td>@urun.Price.ToString("c")</td>
+                  
+                    <td>
+                    <img src="@urun.ImageUrl" class="rounded img-thumbnail urun-resmi" />
+                   @* <img src="/@urun.ImageUrl" /> *@
+                    </td>
+                    <td>
+                    <a asp-action="Update" asp-controller="Product"  asp-route-id="@urun.Id" class="btn btn-success btn-sm">Güncelle</a>
+                    <a asp-action="Details" asp-route-id="@urun.Id" class="btn btn-info btn-sm">Detaylar</a> 
+                    <a asp-action="Remove" asp-controller="Product" asp-route-id="@urun.Id" class="btn btn-danger btn-sm">Sil</a> 
+                    </td>
+                    </tr>
+                }
+            }
+            </tbody>
+        </table>
+    <hr />
+    <a class="btn btn-primary" asp-action="Add" asp-controller="Product">Yeni Ürün Ekle</a>
+    <hr />
+    </div>

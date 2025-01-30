@@ -1,0 +1,59 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Kategoriler Sayfası";
+}
+@model IEnumerable<DBFirstProje.Web.Models.Category>
+
+<div class="container-fluid">
+    <!--tablo oluşturalım-->
+    <hr />
+    @{
+        int adet = (int)ViewData["adet"];
+    }
+    @{
+        if (adet != 0)
+        {
+            <span class="text-white bg-danger"> Veritabanına @adet adet kayıt eklendi</span>
+        }
+    }
+    @* <span class="text-white bg-danger">
+       Veritabanında @ViewData["adet"] adet kayıt eklendi.
+    </span> *@
+    <hr />
+    <a class="btn btn-primary" asp-action="Add" asp-controller="Category">Yeni Kategori Ekle</a>
+    <hr />
+    <table class="table table-striped">
+        <thead class="text-white bg-dark">
+            <tr>
+                <th>ID</th>
+                <th>KATEGORİ ADI</th>
+                <th>KATEGORİ AÇIKLAMA</th>
+                <th>İŞLEMLER</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--veriler-->
+            @{
+                foreach (var category in Model)
+                {
+                    <tr>
+                        <td>@category.Id</td>
+                        <td>@category.CategoryName</td>
+                        <td>@category.Description</td>
+                     
+                        <td>
+                            <a asp-action="Update" asp-controller="Category" asp-route-id="@category.Id" class="btn btn-success btn-sm">Güncelle</a>
+                            <a asp-action="Details" asp-controller="Category" asp-route-id="@category.Id" class="btn btn-info btn-sm">Detaylar</a>
+                            <a asp-action="Remove" asp-controller="Category" asp-route-id="@category.Id" class="btn btn-danger btn-sm">Sil</a>
+                        </td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+    <hr />
+    <a class="btn btn-primary" asp-action="Add" asp-controller="Category">Yeni Kategori Ekle</a>
+    <hr />
+</div>
+

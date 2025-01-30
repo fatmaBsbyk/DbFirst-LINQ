@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Ürün Ekleme Sayfası";
+}
+@model DBFirstProje.Web.Models.Product
+<div class="container-fluid">
+    <h1>ÜRÜN EKLEME</h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Add" method="post">
+                 @*<div class="form-group">
+                     <label asp-for="Id" class="control-label"></label>
+                     <input asp-for="Id" class="form-control" disabled />
+                </div>*@
+
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Stock" class="control-label"></label>
+                    <input asp-for="Stock" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ImageUrl" class="control-label"></label>
+                    <input asp-for="ImageUrl" class="form-control" />
+                </div>
+
+                <div class="form-control m-2">
+                    <button class="btn btn-danger" type="reset">Formu Temizle</button>
+                    <button class="btn btn-success" type="submit">Kaydet</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <hr />
+    <a class="btn btn-dark" asp-action="Index" asp-controller="Product">Ürünler Listesine Dön...</a>
+    <hr />
+</div>
